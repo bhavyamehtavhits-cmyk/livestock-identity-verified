@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VerificationRouteImport } from './routes/verification'
 import { Route as MonitoringRouteImport } from './routes/monitoring'
 import { Route as EnrollmentRouteImport } from './routes/enrollment'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VerificationRoute = VerificationRouteImport.update({
@@ -29,6 +30,11 @@ const EnrollmentRoute = EnrollmentRouteImport.update({
   path: '/enrollment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/enrollment': typeof EnrollmentRoute
   '/monitoring': typeof MonitoringRoute
   '/verification': typeof VerificationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/enrollment': typeof EnrollmentRoute
   '/monitoring': typeof MonitoringRoute
   '/verification': typeof VerificationRoute
@@ -50,20 +58,28 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/enrollment': typeof EnrollmentRoute
   '/monitoring': typeof MonitoringRoute
   '/verification': typeof VerificationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/enrollment' | '/monitoring' | '/verification'
+  fullPaths: '/' | '/admin' | '/enrollment' | '/monitoring' | '/verification'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/enrollment' | '/monitoring' | '/verification'
-  id: '__root__' | '/' | '/enrollment' | '/monitoring' | '/verification'
+  to: '/' | '/admin' | '/enrollment' | '/monitoring' | '/verification'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/enrollment'
+    | '/monitoring'
+    | '/verification'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   EnrollmentRoute: typeof EnrollmentRoute
   MonitoringRoute: typeof MonitoringRoute
   VerificationRoute: typeof VerificationRoute
@@ -92,6 +108,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnrollmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +127,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   EnrollmentRoute: EnrollmentRoute,
   MonitoringRoute: MonitoringRoute,
   VerificationRoute: VerificationRoute,
