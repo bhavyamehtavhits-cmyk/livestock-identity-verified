@@ -9,8 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VerificationRouteImport } from './routes/verification'
+import { Route as MonitoringRouteImport } from './routes/monitoring'
+import { Route as MobileRouteImport } from './routes/mobile'
+import { Route as EnrollmentRouteImport } from './routes/enrollment'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VerificationRoute = VerificationRouteImport.update({
+  id: '/verification',
+  path: '/verification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonitoringRoute = MonitoringRouteImport.update({
+  id: '/monitoring',
+  path: '/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MobileRoute = MobileRouteImport.update({
+  id: '/mobile',
+  path: '/mobile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnrollmentRoute = EnrollmentRouteImport.update({
+  id: '/enrollment',
+  path: '/enrollment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +49,102 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/enrollment': typeof EnrollmentRoute
+  '/mobile': typeof MobileRoute
+  '/monitoring': typeof MonitoringRoute
+  '/verification': typeof VerificationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/enrollment': typeof EnrollmentRoute
+  '/mobile': typeof MobileRoute
+  '/monitoring': typeof MonitoringRoute
+  '/verification': typeof VerificationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/enrollment': typeof EnrollmentRoute
+  '/mobile': typeof MobileRoute
+  '/monitoring': typeof MonitoringRoute
+  '/verification': typeof VerificationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/enrollment'
+    | '/mobile'
+    | '/monitoring'
+    | '/verification'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/enrollment'
+    | '/mobile'
+    | '/monitoring'
+    | '/verification'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/enrollment'
+    | '/mobile'
+    | '/monitoring'
+    | '/verification'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  EnrollmentRoute: typeof EnrollmentRoute
+  MobileRoute: typeof MobileRoute
+  MonitoringRoute: typeof MonitoringRoute
+  VerificationRoute: typeof VerificationRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/verification': {
+      id: '/verification'
+      path: '/verification'
+      fullPath: '/verification'
+      preLoaderRoute: typeof VerificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monitoring': {
+      id: '/monitoring'
+      path: '/monitoring'
+      fullPath: '/monitoring'
+      preLoaderRoute: typeof MonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mobile': {
+      id: '/mobile'
+      path: '/mobile'
+      fullPath: '/mobile'
+      preLoaderRoute: typeof MobileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enrollment': {
+      id: '/enrollment'
+      path: '/enrollment'
+      fullPath: '/enrollment'
+      preLoaderRoute: typeof EnrollmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +157,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  EnrollmentRoute: EnrollmentRoute,
+  MobileRoute: MobileRoute,
+  MonitoringRoute: MonitoringRoute,
+  VerificationRoute: VerificationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
