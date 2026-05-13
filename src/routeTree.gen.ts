@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VerificationRouteImport } from './routes/verification'
 import { Route as MonitoringRouteImport } from './routes/monitoring'
+import { Route as MobileRouteImport } from './routes/mobile'
 import { Route as EnrollmentRouteImport } from './routes/enrollment'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const VerificationRoute = VerificationRouteImport.update({
 const MonitoringRoute = MonitoringRouteImport.update({
   id: '/monitoring',
   path: '/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MobileRoute = MobileRouteImport.update({
+  id: '/mobile',
+  path: '/mobile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnrollmentRoute = EnrollmentRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/enrollment': typeof EnrollmentRoute
+  '/mobile': typeof MobileRoute
   '/monitoring': typeof MonitoringRoute
   '/verification': typeof VerificationRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/enrollment': typeof EnrollmentRoute
+  '/mobile': typeof MobileRoute
   '/monitoring': typeof MonitoringRoute
   '/verification': typeof VerificationRoute
 }
@@ -60,19 +68,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/enrollment': typeof EnrollmentRoute
+  '/mobile': typeof MobileRoute
   '/monitoring': typeof MonitoringRoute
   '/verification': typeof VerificationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/enrollment' | '/monitoring' | '/verification'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/enrollment'
+    | '/mobile'
+    | '/monitoring'
+    | '/verification'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/enrollment' | '/monitoring' | '/verification'
+  to:
+    | '/'
+    | '/admin'
+    | '/enrollment'
+    | '/mobile'
+    | '/monitoring'
+    | '/verification'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/enrollment'
+    | '/mobile'
     | '/monitoring'
     | '/verification'
   fileRoutesById: FileRoutesById
@@ -81,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   EnrollmentRoute: typeof EnrollmentRoute
+  MobileRoute: typeof MobileRoute
   MonitoringRoute: typeof MonitoringRoute
   VerificationRoute: typeof VerificationRoute
 }
@@ -99,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/monitoring'
       fullPath: '/monitoring'
       preLoaderRoute: typeof MonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mobile': {
+      id: '/mobile'
+      path: '/mobile'
+      fullPath: '/mobile'
+      preLoaderRoute: typeof MobileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enrollment': {
@@ -129,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   EnrollmentRoute: EnrollmentRoute,
+  MobileRoute: MobileRoute,
   MonitoringRoute: MonitoringRoute,
   VerificationRoute: VerificationRoute,
 }
