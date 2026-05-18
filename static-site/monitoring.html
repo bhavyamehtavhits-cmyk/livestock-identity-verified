@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pilot Monitoring · NDLM</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div id="gov-header"></div>
+<section class="section"><div class="container">
+  <h3>Pilot Monitoring — Anand Dairy Cluster</h3>
+  <div class="grid cols-4">
+    <div class="card stat"><div class="value">7,36,830</div><div class="label">Pilot enrolments</div></div>
+    <div class="card stat"><div class="value">98.4%</div><div class="label">Avg. fusion accuracy</div></div>
+    <div class="card stat"><div class="value">1.42s</div><div class="label">Mean match latency</div></div>
+    <div class="card stat"><div class="value">5</div><div class="label">Active districts</div></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="dual">
+    <div class="card"><h4>Daily Verification Trend</h4>
+      <svg viewBox="0 0 400 180" width="100%" height="180" role="img" aria-label="Verification trend chart">
+        <polyline fill="none" stroke="#2563eb" stroke-width="2.5"
+          points="0,140 50,120 100,128 150,90 200,98 250,70 300,82 350,50 400,58"/>
+        <polyline fill="rgba(37,99,235,.1)" stroke="none"
+          points="0,140 50,120 100,128 150,90 200,98 250,70 300,82 350,50 400,58 400,180 0,180"/>
+        <g font-size="10" fill="#54657f">
+          <text x="0" y="175">Mon</text><text x="58" y="175">Tue</text><text x="115" y="175">Wed</text>
+          <text x="170" y="175">Thu</text><text x="225" y="175">Fri</text><text x="280" y="175">Sat</text><text x="340" y="175">Sun</text>
+        </g>
+      </svg>
+    </div>
+    <div class="card"><h4>Modality Distribution</h4>
+      <div class="donut">
+        <svg viewBox="0 0 120 120" width="180" height="180" role="img" aria-label="Modality donut chart">
+          <circle r="50" cx="60" cy="60" fill="none" stroke="#e7edf6" stroke-width="16"/>
+          <circle r="50" cx="60" cy="60" fill="none" stroke="#2563eb" stroke-width="16"
+            stroke-dasharray="180 314" transform="rotate(-90 60 60)"/>
+          <circle r="50" cx="60" cy="60" fill="none" stroke="#138808" stroke-width="16"
+            stroke-dasharray="90 314" stroke-dashoffset="-180" transform="rotate(-90 60 60)"/>
+          <circle r="50" cx="60" cy="60" fill="none" stroke="#ff9933" stroke-width="16"
+            stroke-dasharray="44 314" stroke-dashoffset="-270" transform="rotate(-90 60 60)"/>
+          <text x="60" y="64" text-anchor="middle" font-size="14" fill="#0b2545" font-weight="700">100%</text>
+        </svg>
+      </div>
+      <div style="display:flex;justify-content:space-around;font-size:12px;margin-top:8px">
+        <span><b style="color:#2563eb">■</b> Muzzle 57%</span>
+        <span><b style="color:#138808">■</b> Face 29%</span>
+        <span><b style="color:#ff9933">■</b> Body 14%</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>District-wise Performance</h3>
+  <div class="card" style="padding:0;overflow:auto">
+    <table>
+      <thead><tr><th>District</th><th>Enrolled</th><th>Accuracy</th><th>Status</th></tr></thead>
+      <tbody id="dist-rows"></tbody>
+    </table>
+  </div>
+</div></section>
+
+<div id="gov-footer"></div>
+<script src="app.js"></script>
+<script>
+NDLM.data().then(d=>{
+  document.getElementById("dist-rows").innerHTML = d.districts.map(r=>
+    `<tr><td>${r.name}</td><td>${r.enrolled.toLocaleString("en-IN")}</td><td>${r.accuracy}%</td>
+     <td><span class="tag ${r.accuracy>=98?"ok":"warn"}">${r.accuracy>=98?"Healthy":"Monitor"}</span></td></tr>`).join("");
+});
+</script>
+</body></html>

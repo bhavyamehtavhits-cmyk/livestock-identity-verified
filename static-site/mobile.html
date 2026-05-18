@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FLW Mobile Capture · NDLM</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div id="gov-header"></div>
+<section class="section"><div class="container">
+  <h3>Field-Level Worker · Mobile Capture Preview</h3>
+  <div class="dual">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-head"><span>NDLM Capture</span><span>● Online</span></div>
+        <div class="phone-body">
+          <div class="kv"><span>Animal ID</span><span>NDLM-GJ-45882</span></div>
+          <div class="kv"><span>FLW</span><span>Rakesh Patel</span></div>
+          <div class="kv"><span>GPS</span><span style="color:#138808">Locked ✓</span></div>
+          <div class="viewfinder">Align muzzle within frame</div>
+          <div class="kv"><span>Focus</span><span style="color:#138808">Sharp</span></div>
+          <div class="kv"><span>Lighting</span><span style="color:#138808">Good</span></div>
+          <button class="btn" style="width:100%">Capture & Verify</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Capture Quality Gates</h4>
+      <ul style="color:var(--muted);font-size:14px;line-height:1.8">
+        <li>On-device CNN rejects blurred / over-exposed frames before upload.</li>
+        <li>GPS coordinate must match assigned beat to prevent spoofing.</li>
+        <li>Device fingerprint and FLW credential bound to every submission.</li>
+        <li>Offline buffer (up to 500 records) syncs when network resumes.</li>
+        <li>End-to-end TLS 1.3 with payload signing (Ed25519).</li>
+      </ul>
+      <h4 style="margin-top:18px">Sample Verification</h4>
+      <div class="kv"><span>Region</span><span>Anand Dairy Cluster</span></div>
+      <div class="kv"><span>Fusion accuracy</span><span style="color:var(--india-green)">98.4%</span></div>
+      <div class="kv"><span>Match latency</span><span>1.4s</span></div>
+    </div>
+  </div>
+</div></section>
+<div id="gov-footer"></div>
+<script src="app.js"></script>
+</body></html>

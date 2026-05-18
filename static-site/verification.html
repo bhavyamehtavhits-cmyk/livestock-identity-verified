@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Verification Console · NDLM</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div id="gov-header"></div>
+<section class="section"><div class="container">
+  <h3>Verification Console — NDLM-GJ-45882</h3>
+  <div class="dual">
+    <div class="card"><h4>Captured Sample</h4>
+      <div class="capture" style="min-height:220px">Muzzle frame · 1920×1080</div>
+      <div class="kv"><span>Captured by</span><span>Rakesh Patel</span></div>
+      <div class="kv"><span>Timestamp</span><span>2026-05-18 09:12:08 IST</span></div>
+      <div class="kv"><span>GPS</span><span>22.5645° N, 72.9289° E</span></div>
+      <div class="kv"><span>Quality score</span><span>0.96</span></div>
+    </div>
+    <div class="card"><h4>Registry Match</h4>
+      <div class="capture" style="min-height:220px">Registry frame · Gir / Anand</div>
+      <div class="kv"><span>Match ID</span><span>NDLM-GJ-45882</span></div>
+      <div class="kv"><span>Muzzle similarity</span><span>98.9%</span></div>
+      <div class="match-bar"><span style="width:98.9%"></span></div>
+      <div class="kv"><span>Facial similarity</span><span>97.6%</span></div>
+      <div class="match-bar"><span style="width:97.6%"></span></div>
+      <div class="kv"><span>Fusion score</span><span style="color:var(--india-green)">98.4% · MATCH</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>Immutable Audit Trail</h3>
+  <div class="card" style="padding:0;overflow:auto">
+    <table>
+      <thead><tr><th>Hash</th><th>Event</th><th>Actor</th><th>Timestamp</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>0x9af2…b17e</td><td>Capture submitted</td><td>FLW Rakesh Patel</td><td>09:12:08</td><td><span class="tag ok">Signed</span></td></tr>
+        <tr><td>0x4c01…7e2a</td><td>Quality gate passed</td><td>Edge-AI v3.2</td><td>09:12:09</td><td><span class="tag ok">OK</span></td></tr>
+        <tr><td>0x771b…d8c4</td><td>1:N match executed</td><td>NDLM Matcher</td><td>09:12:11</td><td><span class="tag ok">98.4%</span></td></tr>
+        <tr><td>0xae34…0091</td><td>Bharat Pashudhan sync</td><td>API Bridge</td><td>09:12:12</td><td><span class="tag ok">Synced</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+<div id="gov-footer"></div>
+<script src="app.js"></script>
+</body></html>

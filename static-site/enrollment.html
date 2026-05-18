@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Animal Enrollment · NDLM</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div id="gov-header"></div>
+<section class="section"><div class="container">
+  <h3>Animal Enrollment</h3>
+  <div class="card">
+    <div class="form-grid">
+      <div class="field"><label>Animal ID</label><input value="NDLM-GJ-45882" readonly/></div>
+      <div class="field"><label>Species</label>
+        <select><option>Cattle (Bos indicus)</option><option>Buffalo (Bubalus bubalis)</option></select></div>
+      <div class="field"><label>Breed</label>
+        <select><option>Gir</option><option>Sahiwal</option><option>Murrah</option><option>Tharparkar</option></select></div>
+      <div class="field"><label>Sex</label>
+        <select><option>Female</option><option>Male</option></select></div>
+      <div class="field"><label>Date of Birth</label><input type="date" value="2022-04-12"/></div>
+      <div class="field"><label>Owner Name</label><input value="Kantilal Patel"/></div>
+      <div class="field"><label>Owner Aadhaar (last 4)</label><input value="••••-••••-3421" readonly/></div>
+      <div class="field"><label>Village / Block</label><input value="Bakrol / Anand"/></div>
+      <div class="field"><label>District</label><input value="Anand"/></div>
+      <div class="field"><label>State</label><input value="Gujarat"/></div>
+      <div class="field"><label>FLW</label><input value="Rakesh Patel (FLW-GJ-1124)" readonly/></div>
+      <div class="field"><label>GPS</label><input value="22.5645° N, 72.9289° E (locked)" readonly/></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>Biometric Capture</h3>
+  <div class="grid cols-3">
+    <div class="card"><h4>Muzzle Pattern</h4><div class="capture">📷<br>Tap to capture<br><small>≥ 1080p, < 50cm distance</small></div></div>
+    <div class="card"><h4>Facial Profile</h4><div class="capture">📷<br>Tap to capture<br><small>Front, eye-level</small></div></div>
+    <div class="card"><h4>Body Profile</h4><div class="capture">📷<br>Tap to capture<br><small>Left side, full frame</small></div></div>
+  </div>
+  <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn">Submit for AI Quality Check</button>
+    <button class="btn outline">Save Draft</button>
+  </div>
+</div></section>
+
+<div id="gov-footer"></div>
+<script src="app.js"></script>
+</body></html>
