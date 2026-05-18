@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NDDB · NDLM Bovine Biometric Identification System</title>
+<meta name="description" content="National Digital Livestock Mission – Bovine Biometric Identification Platform by NDDB."/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div id="gov-header"></div>
+
+<section class="hero"><div class="container">
+  <span class="badge">National Digital Livestock Mission · Pilot Phase II</span>
+  <h2>AI-Powered Bovine Biometric Identification</h2>
+  <p>Smartphone-based muzzle and facial verification linking every bovine in India to a single, tamper-resistant national registry — enabling insurance, breeding, vaccination and welfare programmes at scale.</p>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>National Coverage Snapshot</h3>
+  <div class="grid cols-4" id="stats-grid"></div>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>Platform Modules</h3>
+  <div class="grid cols-3" id="modules-grid"></div>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>Verification Workflow</h3>
+  <div class="workflow">
+    <div class="step"><div class="n">1</div><h5>Capture</h5><p>FLW captures muzzle, face and profile via mobile app with GPS lock.</p></div>
+    <div class="step"><div class="n">2</div><h5>Quality Gate</h5><p>On-device CNN validates focus, lighting and occlusion before upload.</p></div>
+    <div class="step"><div class="n">3</div><h5>AI Match</h5><p>Cloud fusion model compares against the national registry (1:N).</p></div>
+    <div class="step"><div class="n">4</div><h5>Audit & Sync</h5><p>Verdict written to immutable ledger and synced with Bharat Pashudhan.</p></div>
+  </div>
+</div></section>
+
+<div id="gov-footer"></div>
+<script src="app.js"></script>
+<script>
+NDLM.data().then(d=>{
+  document.getElementById("stats-grid").innerHTML = d.stats.map(s=>
+    `<div class="card stat"><div class="value">${s.value}</div><div class="label">${s.label}</div></div>`).join("");
+  document.getElementById("modules-grid").innerHTML = d.modules.map(m=>
+    `<div class="card module"><h4>${m.title}</h4><p>${m.desc}</p><a class="btn" href="${m.href}">Open</a></div>`).join("");
+});
+</script>
+</body></html>

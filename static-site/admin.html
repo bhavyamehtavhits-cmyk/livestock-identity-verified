@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Administration · NDLM</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div id="gov-header"></div>
+<section class="section"><div class="container">
+  <h3>System Health</h3>
+  <div class="grid cols-4">
+    <div class="card stat"><div class="value">99.98%</div><div class="label">API Uptime · 30d</div></div>
+    <div class="card stat"><div class="value">1.42s</div><div class="label">Mean Match Latency</div></div>
+    <div class="card stat"><div class="value">42,318</div><div class="label">Active FLW Devices</div></div>
+    <div class="card stat"><div class="value">0</div><div class="label">P1 Incidents · 7d</div></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>Integration Status</h3>
+  <div class="card" style="padding:0;overflow:auto">
+    <table>
+      <thead><tr><th>System</th><th>Uptime</th><th>Status</th></tr></thead>
+      <tbody id="int-rows"></tbody>
+    </table>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <h3>Real-time Audit Log</h3>
+  <div class="card" style="padding:0;overflow:auto">
+    <table>
+      <thead><tr><th>Timestamp</th><th>Actor</th><th>Event</th><th>Status</th></tr></thead>
+      <tbody id="audit-rows"></tbody>
+    </table>
+  </div>
+</div></section>
+
+<div id="gov-footer"></div>
+<script src="app.js"></script>
+<script>
+NDLM.data().then(d=>{
+  document.getElementById("int-rows").innerHTML = d.integrations.map(i=>
+    `<tr><td>${i.name}</td><td>${i.uptime}</td><td><span class="tag ok">${i.status}</span></td></tr>`).join("");
+  document.getElementById("audit-rows").innerHTML = d.auditLogs.map(l=>
+    `<tr><td>${l.ts}</td><td>${l.actor}</td><td>${l.event}</td><td><span class="tag ok">${l.status}</span></td></tr>`).join("");
+});
+</script>
+</body></html>

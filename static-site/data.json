@@ -1,0 +1,48 @@
+{
+  "platform": {
+    "name": "NDLM Bovine Biometric Identification System",
+    "ministry": "Ministry of Fisheries, Animal Husbandry & Dairying",
+    "agency": "National Dairy Development Board (NDDB)",
+    "mission": "National Digital Livestock Mission"
+  },
+  "stats": [
+    { "label": "Animals Enrolled", "value": "2.48 Cr" },
+    { "label": "Verification Accuracy", "value": "98.4%" },
+    { "label": "Active FLWs", "value": "42,318" },
+    { "label": "Districts Covered", "value": "187" }
+  ],
+  "modules": [
+    { "title": "Animal Enrollment", "desc": "Register bovines with metadata and biometric capture.", "href": "enrollment.html" },
+    { "title": "Verification Console", "desc": "AI-powered muzzle and facial biometric matching.", "href": "verification.html" },
+    { "title": "Pilot Monitoring", "desc": "Track district-wise performance & coverage.", "href": "monitoring.html" },
+    { "title": "Administration", "desc": "System health, APIs, audit logs.", "href": "admin.html" },
+    { "title": "FLW Mobile", "desc": "Smartphone capture interface preview.", "href": "mobile.html" }
+  ],
+  "sampleAnimal": {
+    "id": "NDLM-GJ-45882",
+    "species": "Bovine (Cattle)",
+    "breed": "Gir",
+    "region": "Anand Dairy Cluster",
+    "flw": "Rakesh Patel",
+    "accuracy": "98.4%"
+  },
+  "districts": [
+    { "name": "Anand", "enrolled": 184220, "accuracy": 98.7 },
+    { "name": "Mehsana", "enrolled": 162540, "accuracy": 98.2 },
+    { "name": "Banaskantha", "enrolled": 141880, "accuracy": 97.9 },
+    { "name": "Kheda", "enrolled": 128430, "accuracy": 98.5 },
+    { "name": "Sabarkantha", "enrolled": 119760, "accuracy": 97.6 }
+  ],
+  "auditLogs": [
+    { "ts": "2026-05-18 09:14:22", "actor": "API:bharat-pashudhan", "event": "Sync batch 4821 (1,204 records)", "status": "OK" },
+    { "ts": "2026-05-18 09:12:08", "actor": "FLW:Rakesh Patel", "event": "Animal NDLM-GJ-45882 verified", "status": "OK" },
+    { "ts": "2026-05-18 09:08:51", "actor": "System", "event": "Daily integrity hash committed", "status": "OK" },
+    { "ts": "2026-05-18 08:55:30", "actor": "Admin:nddb_ops_03", "event": "Pilot region expanded: Sabarkantha", "status": "OK" }
+  ],
+  "integrations": [
+    { "name": "Bharat Pashudhan", "uptime": "99.98%", "status": "Operational" },
+    { "name": "NDLM Core Registry", "uptime": "99.95%", "status": "Operational" },
+    { "name": "INAPH Insurance", "uptime": "99.81%", "status": "Operational" },
+    { "name": "e-GopalaApp", "uptime": "99.72%", "status": "Operational" }
+  ]
+}

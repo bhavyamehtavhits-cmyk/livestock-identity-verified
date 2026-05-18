@@ -1,0 +1,103 @@
+:root{
+  --gov-navy:#0b2545;
+  --gov-blue:#13315c;
+  --gov-blue-2:#1d4e89;
+  --gov-accent:#2563eb;
+  --saffron:#ff9933;
+  --india-green:#138808;
+  --bg:#f4f7fb;
+  --surface:#ffffff;
+  --border:#d6deea;
+  --text:#0b1d35;
+  --muted:#54657f;
+  --shadow:0 1px 2px rgba(11,37,69,.06),0 6px 18px rgba(11,37,69,.06);
+}
+.high-contrast{
+  --bg:#000;--surface:#000;--text:#fff;--muted:#ffeb3b;
+  --border:#fff;--gov-navy:#000;--gov-blue:#000;--gov-accent:#ffeb3b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Inter","Segoe UI",system-ui,Arial,sans-serif;line-height:1.5}
+a{color:var(--gov-accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1240px;margin:0 auto;padding:0 20px}
+.utility-bar{background:#06192f;color:#cfe0f7;font-size:12px}
+.utility-bar .container{display:flex;justify-content:space-between;align-items:center;height:34px;flex-wrap:wrap;gap:8px}
+.utility-bar .left span{margin-right:14px}
+.utility-bar button{background:transparent;border:1px solid #2a4a73;color:#cfe0f7;font-size:12px;padding:3px 8px;border-radius:3px;cursor:pointer;margin-left:6px}
+.utility-bar button:hover{background:#0e2a4d}
+.gov-strip{height:6px;background:linear-gradient(90deg,var(--saffron) 0 33.3%,#fff 33.3% 66.6%,var(--india-green) 66.6% 100%)}
+.header{background:var(--surface);border-bottom:1px solid var(--border)}
+.header .container{display:flex;align-items:center;gap:18px;padding-top:14px;padding-bottom:14px}
+.emblem{width:54px;height:54px;border-radius:50%;background:var(--gov-navy);color:#fff;display:grid;place-items:center;font-weight:700;font-size:11px;text-align:center;line-height:1.1;border:2px solid var(--saffron)}
+.brand h1{margin:0;font-size:18px;color:var(--gov-navy)}
+.brand p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+.nav{background:var(--gov-navy)}
+.nav .container{display:flex;flex-wrap:wrap;gap:2px}
+.nav a{color:#dfeaff;padding:12px 16px;font-size:14px;font-weight:500;border-bottom:3px solid transparent}
+.nav a:hover{background:#0e2a4d;text-decoration:none}
+.nav a.active{background:#0e2a4d;border-bottom-color:var(--saffron);color:#fff}
+.hero{background:linear-gradient(135deg,var(--gov-navy),var(--gov-blue-2));color:#fff;padding:48px 0}
+.hero h2{margin:0 0 10px;font-size:28px}
+.hero p{margin:0;max-width:760px;color:#d6e4ff}
+.badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;padding:4px 10px;border-radius:999px;font-size:12px;margin-bottom:14px}
+.section{padding:36px 0}
+.section h3{margin:0 0 16px;color:var(--gov-navy);font-size:20px;border-left:4px solid var(--saffron);padding-left:10px}
+.grid{display:grid;gap:16px}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid.cols-4{grid-template-columns:repeat(4,1fr)}
+.grid.cols-5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:900px){.grid.cols-3,.grid.cols-4,.grid.cols-5{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid.cols-2,.grid.cols-3,.grid.cols-4,.grid.cols-5{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px;box-shadow:var(--shadow)}
+.stat .value{font-size:24px;font-weight:700;color:var(--gov-navy)}
+.stat .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.module h4{margin:0 0 6px;color:var(--gov-navy);font-size:15px}
+.module p{margin:0 0 10px;color:var(--muted);font-size:13px}
+.btn{display:inline-block;background:var(--gov-accent);color:#fff;padding:8px 14px;border-radius:4px;font-size:13px;border:none;cursor:pointer}
+.btn:hover{background:#1d4ed8;text-decoration:none;color:#fff}
+.btn.outline{background:transparent;color:var(--gov-accent);border:1px solid var(--gov-accent)}
+.workflow{display:flex;gap:12px;flex-wrap:wrap}
+.step{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:14px;position:relative}
+.step .n{display:inline-grid;place-items:center;width:26px;height:26px;background:var(--gov-accent);color:#fff;border-radius:50%;font-size:12px;font-weight:700;margin-bottom:8px}
+.step h5{margin:0 0 4px;font-size:14px;color:var(--gov-navy)}
+.step p{margin:0;font-size:12px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:680px){.form-grid{grid-template-columns:1fr}}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.field input,.field select,.field textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:4px;font-size:14px;background:var(--surface);color:var(--text)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gov-accent);border-color:var(--gov-accent)}
+.capture{border:2px dashed var(--border);border-radius:6px;padding:24px;text-align:center;color:var(--muted);background:#fbfcfe}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:780px){.dual{grid-template-columns:1fr}}
+.match-bar{height:10px;background:#e7edf6;border-radius:99px;overflow:hidden;margin:6px 0}
+.match-bar > span{display:block;height:100%;background:linear-gradient(90deg,var(--india-green),#34d399)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:#eef3fb;color:var(--gov-navy);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+tr:hover td{background:#f7faff}
+.tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:600}
+.tag.ok{background:#dcfce7;color:#15803d}
+.tag.warn{background:#fef3c7;color:#92400e}
+.tag.err{background:#fee2e2;color:#991b1b}
+.phone{width:300px;margin:0 auto;background:#0b1d35;border-radius:32px;padding:14px;box-shadow:var(--shadow)}
+.phone-screen{background:#fff;border-radius:22px;overflow:hidden;min-height:520px;display:flex;flex-direction:column}
+.phone-head{background:var(--gov-navy);color:#fff;padding:10px 14px;font-size:13px;display:flex;justify-content:space-between}
+.phone-body{padding:14px;flex:1;display:flex;flex-direction:column;gap:10px;font-size:13px}
+.viewfinder{flex:1;border:2px dashed #1d4e89;border-radius:8px;background:#eef3fb;display:grid;place-items:center;color:var(--muted);min-height:200px;position:relative}
+.viewfinder::before,.viewfinder::after{content:"";position:absolute;width:24px;height:24px;border:3px solid var(--saffron)}
+.viewfinder::before{top:8px;left:8px;border-right:none;border-bottom:none}
+.viewfinder::after{bottom:8px;right:8px;border-left:none;border-top:none}
+.kv{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px dashed var(--border)}
+.kv:last-child{border-bottom:none}
+.kv span:first-child{color:var(--muted)}
+.kv span:last-child{font-weight:600;color:var(--gov-navy)}
+.donut{display:grid;place-items:center}
+.footer{background:var(--gov-navy);color:#cfe0f7;margin-top:40px}
+.footer-top{padding:28px 0}
+.footer h5{margin:0 0 10px;color:#fff;font-size:14px}
+.footer a{color:#cfe0f7;display:block;font-size:13px;padding:3px 0}
+.footer-bottom{border-top:1px solid #173863;padding:14px 0;font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.compliance{display:flex;gap:8px;flex-wrap:wrap}
+.compliance span{background:#173863;padding:3px 8px;border-radius:3px;font-size:11px}
